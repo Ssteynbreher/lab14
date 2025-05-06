@@ -3,232 +3,369 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Минималистичное резюме</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Техническое резюме</title>
   <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #34495e;
+    }
+
     body {
-      font-family: 'Helvetica', Arial, sans-serif;
-      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
       color: #333;
+      line-height: 1.6;
+    }
+
+    .resume-container {
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      border-left: 5px solid var(--accent);
     }
-    
-    header {
-      margin-bottom: 30px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 20px;
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      color: white;
     }
-    
-    h1 {
-      margin: 0;
-      font-size: 28px;
-      font-weight: normal;
-    }
-    
-    .position {
-      color: #666;
-      margin: 5px 0 15px;
-    }
-    
-    .photo {
+
+    .photo-container {
       width: 120px;
       height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid white;
+      margin-right: 30px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .photo-container:hover {
+      transform: scale(1.05);
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border: 1px solid #ddd;
-      float: right;
-      margin-left: 20px;
     }
-    
-    section {
-      margin-bottom: 30px;
+
+    .name {
+      font-size: 28px;
+      margin: 0 0 5px;
     }
-    
-    h2 {
-      font-size: 20px;
+
+    .title {
+      font-size: 18px;
+      color: var(--light);
+      margin: 0;
+    }
+
+    .section {
+      padding: 25px 30px;
       border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
-      margin-top: 0;
     }
-    
-    .job, .education {
+
+    .section-title {
+      color: var(--primary);
+      font-size: 22px;
+      margin: 0 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--secondary);
+    }
+
+    .item {
       margin-bottom: 20px;
     }
-    
-    .job-title, .degree {
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .item-title {
       font-weight: bold;
+      color: var(--dark);
+      font-size: 18px;
     }
-    
-    .company, .university {
-      color: #666;
+
+    .item-date {
+      color: #7f8c8d;
     }
-    
-    .period {
-      color: #999;
-      font-size: 14px;
+
+    .item-subtitle {
+      color: var(--secondary);
+      margin-bottom: 10px;
     }
-    
+
     .skills {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
     }
-    
+
     .skill {
-      background: #f5f5f5;
-      padding: 5px 10px;
-      border-radius: 3px;
+      background: var(--light);
+      padding: 8px 15px;
+      border-radius: 20px;
       font-size: 14px;
     }
-    
+
+    .contacts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+
     .contact-item {
-      margin-bottom: 10px;
-    }
-    
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 30px;
-    }
-    
-    button {
-      padding: 10px 15px;
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 5px;
     }
-    
-    button:hover {
-      background: #eee;
+
+    .contact-icon {
+      margin-right: 10px;
+      color: var(--secondary);
     }
-    
-    @media print {
-      button {
-        display: none;
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--secondary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    .btn-secondary:hover {
+      background: #dfe6e9;
+    }
+
+    [contenteditable="true"] {
+      padding: 2px 5px;
+      border-radius: 3px;
+      outline: none;
+    }
+
+    [contenteditable="true"]:focus {
+      background: rgba(52, 152, 219, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .photo-container {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      
+      .contacts {
+        grid-template-columns: 1fr;
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <img src="https://via.placeholder.com/120" alt="Фото профиля" class="photo">
-    <h1>Иван Иванов</h1>
-    <div class="position">Веб-разработчик</div>
-  </header>
-
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-    <div>
-      <section>
-        <h2>Контактные данные</h2>
-        <div class="contact-item">
-          <i class="fas fa-phone"></i> +7 (123) 456-78-90
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i> ivanov@example.com
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-github"></i> github.com/ivanov
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i> Москва, Россия
-        </div>
-      </section>
-
-      <section>
-        <h2>Навыки</h2>
-        <div class="skills">
-          <span class="skill">HTML/CSS</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">React</span>
-          <span class="skill">Node.js</span>
-          <span class="skill">Git</span>
-          <span class="skill">SQL</span>
-        </div>
-      </section>
-
-      <section>
-        <h2>Языки</h2>
-        <div>
-          <div>Русский (родной)</div>
-          <div>Английский (B2)</div>
-        </div>
-      </section>
+  <div class="resume-container" id="resume">
+    <div class="header">
+      <div class="photo-container" id="photoUpload">
+        <img class="photo" id="profileImage" src="https://via.placeholder.com/120" alt="Фото профиля">
+      </div>
+      <div>
+        <h1 class="name" contenteditable="true">Иван Иванов</h1>
+        <p class="title" contenteditable="true">Frontend разработчик</p>
+      </div>
     </div>
 
-    <div>
-      <section>
-        <h2>Опыт работы</h2>
-        <div class="job">
-          <div style="display: flex; justify-content: space-between;">
-            <span class="job-title">Старший веб-разработчик</span>
-            <span class="period">2020 - н.в.</span>
-          </div>
-          <div class="company">ТехноКаб, Москва</div>
-          <p>Разработка и поддержка веб-приложений, руководство командой разработчиков.</p>
+    <div class="section">
+      <h2 class="section-title">Опыт работы</h2>
+      
+      <div class="item" contenteditable="true">
+        <div class="item-header">
+          <div class="item-title">Старший разработчик</div>
+          <div class="item-date">2020 - настоящее время</div>
         </div>
-        <div class="job">
-          <div style="display: flex; justify-content: space-between;">
-            <span class="job-title">Веб-разработчик</span>
-            <span class="period">2018 - 2020</span>
-          </div>
-          <div class="company">ДизайнСтудия, СПб</div>
-          <p>Создание адаптивных веб-сайтов, интеграция с CMS.</p>
+        <div class="item-subtitle">ТехноКомпания, Москва</div>
+        <p>Разработка и поддержка веб-приложений, руководство командой разработчиков.</p>
+      </div>
+      
+      <div class="item" contenteditable="true">
+        <div class="item-header">
+          <div class="item-title">Frontend разработчик</div>
+          <div class="item-date">2018 - 2020</div>
         </div>
-        <button onclick="addExperience()">
-          <i class="fas fa-plus"></i> Добавить опыт работы
-        </button>
-      </section>
+        <div class="item-subtitle">ВебСтудия, Санкт-Петербург</div>
+        <p>Создание адаптивных интерфейсов, работа с клиентами.</p>
+      </div>
+    </div>
 
-      <section>
-        <h2>Образование</h2>
-        <div class="education">
-          <div style="display: flex; justify-content: space-between;">
-            <span class="degree">Магистр компьютерных наук</span>
-            <span class="period">2014 - 2018</span>
-          </div>
-          <div class="university">Московский технический университет</div>
-          <p>Специализация: Веб-технологии. Диплом с отличием.</p>
+    <div class="section">
+      <h2 class="section-title">Образование</h2>
+      
+      <div class="item" contenteditable="true">
+        <div class="item-header">
+          <div class="item-title">Магистр компьютерных наук</div>
+          <div class="item-date">2014 - 2018</div>
         </div>
-        <button onclick="addEducation()">
-          <i class="fas fa-plus"></i> Добавить образование
-        </button>
-      </section>
+        <div class="item-subtitle">Технический университет</div>
+        <p>Специализация: Веб-технологии и искусственный интеллект.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Навыки</h2>
+      <div class="skills" contenteditable="true">
+        <span class="skill">JavaScript</span>
+        <span class="skill">React</span>
+        <span class="skill">HTML/CSS</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Git</span>
+        <span class="skill">TypeScript</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Контакты</h2>
+      <div class="contacts" contenteditable="true">
+        <div class="contact-item">
+          <i class="fas fa-phone contact-icon"></i> +7 (123) 456-7890
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope contact-icon"></i> ivanov@example.com
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github contact-icon"></i> github.com/ivanov
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt contact-icon"></i> Москва, Россия
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="btn btn-primary" id="downloadBtn">
+        <i class="fas fa-download"></i> Скачать PDF
+      </button>
+      <button class="btn btn-secondary" id="editBtn">
+        <i class="fas fa-edit"></i> Редактировать
+      </button>
     </div>
   </div>
 
-  <div class="buttons">
-    <button onclick="downloadPDF()">
-      <i class="fas fa-download"></i> Скачать PDF
-    </button>
-    <button onclick="contactMe()">
-      <i class="fas fa-envelope"></i> Написать мне
-    </button>
-  </div>
+  <input type="file" id="photoInput" accept="image/*" style="display: none;">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
-    function downloadPDF() {
-      // Здесь будет код для генерации PDF
-      alert("Функция скачивания PDF будет реализована");
-    }
+    // Загрузка/сохранение фото
+    const photoUpload = document.getElementById('photoUpload');
+    const photoInput = document.getElementById('photoInput');
+    const profileImage = document.getElementById('profileImage');
+
+    photoUpload.addEventListener('click', () => photoInput.click());
     
-    function contactMe() {
-      // Здесь будет код для формы связи
-      alert("Функция связи будет реализована");
+    photoInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          profileImage.src = event.target.result;
+          localStorage.setItem('profilePhoto', event.target.result);
+        };
+        reader.readAsDataURL(e.target.files[0]);
+      }
+    });
+
+    // Загрузка сохраненного фото
+    if (localStorage.getItem('profilePhoto')) {
+      profileImage.src = localStorage.getItem('profilePhoto');
     }
+
+    // Сохранение текста резюме
+    const resume = document.getElementById('resume');
+    const editableElements = document.querySelectorAll('[contenteditable="true"]');
     
-    function addExperience() {
-      // Здесь будет код для добавления опыта работы
-      alert("Функция добавления опыта работы будет реализована");
-    }
-    
-    function addEducation() {
-      // Здесь будет код для добавления образования
-      alert("Функция добавления образования будет реализована");
-    }
+    editableElements.forEach(el => {
+      const key = 'resume-' + Array.from(el.parentNode.children).indexOf(el);
+      
+      // Загрузка сохраненных данных
+      if (localStorage.getItem(key)) {
+        el.innerHTML = localStorage.getItem(key);
+      }
+      
+      // Сохранение при изменении
+      el.addEventListener('input', function() {
+        localStorage.setItem(key, this.innerHTML);
+      });
+    });
+
+    // Кнопка скачивания PDF
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const element = document.getElementById('resume');
+      const opt = {
+        margin: 10,
+        filename: 'Мое_резюме.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      // Временно скрываем кнопки перед генерацией PDF
+      const buttons = document.querySelectorAll('.buttons');
+      buttons.forEach(btn => btn.style.display = 'none');
+
+      html2pdf().set(opt).from(element).save().then(() => {
+        buttons.forEach(btn => btn.style.display = 'flex');
+      });
+    });
+
+    // Кнопка редактирования (переключает режим редактирования)
+    document.getElementById('editBtn').addEventListener('click', () => {
+      const isEditable = resume.getAttribute('contenteditable') === 'true';
+      resume.setAttribute('contenteditable', !isEditable);
+      
+      if (!isEditable) {
+        alert('Режим редактирования включен. Кликните на любой текст для изменения.');
+      }
+    });
   </script>
 </body>
 </html>
