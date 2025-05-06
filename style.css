@@ -1,212 +1,254 @@
-:root {
-  --ugly-pink: #ff00aa;
-  --toxic-green: #00ff55;
-  --vomit-yellow: #ffee00;
-  --eye-burn-blue: #0066ff;
-  --text-color: #000000;
-  --bg-color: #ffffff;
-  --card-bg: linear-gradient(45deg, #ff9999, #99ff99, #9999ff);
-  --shadow: 5px 5px 0px 0px var(--ugly-pink), 
-             -5px -5px 0px 0px var(--toxic-green);
-  --border-radius: 0;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Резюме без излишеств</title>
+  <style>
+    /* Полная противоположность оригинальному дизайну */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', monospace;
+      background-color: #f0f0f0;
+      color: #333;
+      line-height: 1.4;
+      font-size: 14px;
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  background-image: url('https://i.imgur.com/3ZQ9Z9X.png');
-  background-repeat: repeat;
-  animation: bg-scroll 10s linear infinite;
-}
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: none;
+      border: 1px solid #ddd;
+    }
 
-@keyframes bg-scroll {
-  0% { background-position: 0 0; }
-  100% { background-position: 100px 100px; }
-}
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
 
-.profile-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 10px;
-  border: 10px dashed var(--eye-burn-blue);
-  background-color: rgba(255, 255, 255, 0.7);
-  box-shadow: var(--shadow);
-  transform: rotate(1deg);
-}
+    .photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 0;
+      border: 1px solid #333;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
 
-.profile-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  gap: 20px;
-  animation: shake 0.5s infinite alternate;
-}
+    h1 {
+      font-size: 24px;
+      margin: 0 0 5px 0;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
 
-@keyframes shake {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(10px); }
-}
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      margin: 0;
+    }
 
-.profile-photo {
-  width: 120px;
-  height: 120px;
-  border-radius: 0;
-  overflow: hidden;
-  border: 5px solid var(--vomit-yellow);
-  box-shadow: 0 0 20px var(--ugly-pink);
-  transform: skewX(-10deg);
-}
+    .section {
+      margin-bottom: 30px;
+    }
 
-.profile-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: hue-rotate(90deg) contrast(150%);
-}
+    h2 {
+      font-size: 18px;
+      margin: 0 0 15px 0;
+      font-weight: normal;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
 
-.profile-info h1 {
-  font-size: 3em;
-  margin: 0;
-  color: var(--ugly-pink);
-  text-shadow: 3px 3px 0 var(--toxic-green);
-  font-weight: 900;
-  letter-spacing: 2px;
-}
+    .item {
+      margin-bottom: 20px;
+    }
 
-.profile-info p {
-  font-size: 1.5em;
-  margin: 5px 0 0;
-  color: var(--text-color);
-  background-color: var(--toxic-green);
-  padding: 5px;
-  display: inline-block;
-}
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
 
-.profile-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
+    .item-title {
+      font-weight: bold;
+    }
 
-.profile-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 15px;
-  box-shadow: var(--shadow);
-  border: 3px solid var(--vomit-yellow);
-  animation: pulse 2s infinite;
-}
+    .item-date {
+      color: #666;
+    }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
+    .item-subtitle {
+      color: #666;
+      margin-bottom: 5px;
+    }
 
-.profile-card h2 {
-  color: var(--eye-burn-blue);
-  margin-top: 0;
-  text-decoration: underline wavy var(--ugly-pink);
-  font-size: 1.8em;
-}
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
 
-/* Опыт работы */
-.experience-card {
-  grid-column: span 2;
-  background-color: rgba(255, 0, 170, 0.1);
-}
+    .tag {
+      background-color: #eee;
+      padding: 3px 8px;
+      border: 1px solid #ccc;
+    }
 
-.exp-item {
-  background-color: rgba(0, 255, 85, 0.1);
-  border-radius: var(--border-radius);
-  padding: 15px;
-  border-left: 10px solid var(--eye-burn-blue);
-  margin-bottom: 10px;
-}
+    .contact {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
 
-.exp-header h3 {
-  margin: 0;
-  font-size: 1.5em;
-  color: var(--ugly-pink);
-  font-family: "Papyrus", fantasy;
-}
+    .contact i {
+      width: 20px;
+      text-align: center;
+      margin-right: 10px;
+      color: #666;
+    }
 
-.exp-date {
-  font-size: 1em;
-  color: var(--vomit-yellow);
-  background-color: black;
-  padding: 2px 5px;
-}
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
 
-.exp-company::before {
-  content: "🔥";
-}
+    button {
+      background: none;
+      border: 1px solid #333;
+      padding: 8px 15px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      transition: none;
+    }
 
-/* Образование */
-.edu-item {
-  background-color: rgba(0, 102, 255, 0.1);
-  border-radius: var(--border-radius);
-  padding: 15px;
-  border-left: 10px solid var(--ugly-pink);
-  margin-bottom: 10px;
-}
+    button:hover {
+      background-color: #f0f0f0;
+    }
 
-.edu-header h3 {
-  margin: 0;
-  font-size: 1.5em;
-  color: var(--toxic-green);
-  font-family: "Times New Roman", serif;
-}
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
 
-.edu-place::before {
-  content: "💩";
-}
+    @media (max-width: 600px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="https://via.placeholder.com/100" alt="Фото" class="photo">
+      <h1>Иван Иванов</h1>
+      <p class="subtitle">Веб-разработчик</p>
+    </div>
 
-/* Теги */
-.tag {
-  background-color: var(--vomit-yellow);
-  color: black;
-  padding: 3px 10px;
-  border-radius: 0;
-  font-family: "Impact", sans-serif;
-  border: 2px dotted var(--ugly-pink);
-}
+    <div class="two-column">
+      <div>
+        <div class="section">
+          <h2>Контактные данные</h2>
+          <div class="contact">
+            <i class="fas fa-phone"></i>
+            <span>+7 (123) 456-78-90</span>
+          </div>
+          <div class="contact">
+            <i class="fas fa-envelope"></i>
+            <span>ivanov@example.com</span>
+          </div>
+          <div class="contact">
+            <i class="fab fa-github"></i>
+            <span>github.com/ivanov</span>
+          </div>
+          <div class="contact">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Москва, Россия</span>
+          </div>
+        </div>
 
-/* Кнопки */
-button {
-  border-radius: 0;
-  border: 3px solid black;
-  padding: 10px 20px;
-  font-size: 1.2em;
-  background-color: var(--toxic-green);
-  color: black;
-  cursor: pointer;
-  transition: all 0.1s;
-  font-weight: bold;
-}
+        <div class="section">
+          <h2>Навыки</h2>
+          <div class="tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">React</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
 
-button:hover {
-  background-color: var(--ugly-pink);
-  transform: rotate(5deg);
-}
+        <div class="section">
+          <h2>Языки</h2>
+          <div class="item">
+            <div class="item-title">Русский</div>
+            <div class="item-subtitle">Родной</div>
+          </div>
+          <div class="item">
+            <div class="item-title">Английский</div>
+            <div class="item-subtitle">B2 (Средне-продвинутый)</div>
+          </div>
+        </div>
+      </div>
 
-/* Адаптивность (но всё равно криво) */
-@media (max-width: 768px) {
-  .profile-header {
-    flex-direction: column;
-    text-align: left;
-    animation: none;
-  }
-  
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .profile-container {
-    transform: rotate(-1deg);
-  }
-}
+      <div>
+        <div class="section">
+          <h2>Опыт работы</h2>
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">Старший веб-разработчик</div>
+              <div class="item-date">2020 - н.в.</div>
+            </div>
+            <div class="item-subtitle">ТехноКаб, Москва</div>
+            <p>Разработка и поддержка веб-приложений, руководство командой.</p>
+          </div>
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">Веб-разработчик</div>
+              <div class="item-date">2018 - 2020</div>
+            </div>
+            <div class="item-subtitle">ДизайнСтудия, СПб</div>
+            <p>Создание адаптивных веб-сайтов, интеграция с CMS.</p>
+          </div>
+          <button>Добавить опыт работы</button>
+        </div>
+
+        <div class="section">
+          <h2>Образование</h2>
+          <div class="item">
+            <div class="item-header">
+              <div class="item-title">Магистр компьютерных наук</div>
+              <div class="item-date">2014 - 2018</div>
+            </div>
+            <div class="item-subtitle">Московский технический университет</div>
+            <p>Специализация: Веб-технологии. Диплом с отличием.</p>
+          </div>
+          <button>Добавить образование</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button><i class="fas fa-download"></i> Скачать PDF</button>
+      <button><i class="fas fa-envelope"></i> Написать мне</button>
+      <button><i class="fas fa-share-alt"></i> Поделиться</button>
+    </div>
+  </div>
+</body>
+</html>
