@@ -1,218 +1,212 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    :root {
-      --color1: #FF00FF;
-      --color2: #00FFFF;
-      --color3: #FFFF00;
-      --color4: #FF00FF;
-    }
+:root {
+  --ugly-pink: #ff00aa;
+  --toxic-green: #00ff55;
+  --vomit-yellow: #ffee00;
+  --eye-burn-blue: #0066ff;
+  --text-color: #000000;
+  --bg-color: #ffffff;
+  --card-bg: linear-gradient(45deg, #ff9999, #99ff99, #9999ff);
+  --shadow: 5px 5px 0px 0px var(--ugly-pink), 
+             -5px -5px 0px 0px var(--toxic-green);
+  --border-radius: 0;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Comic Sans MS", "Wingdings", "Papyrus", sans-serif;
-      background: repeating-linear-gradient(
-        45deg,
-        var(--color1),
-        var(--color1) 10px,
-        var(--color2) 10px,
-        var(--color2) 20px
-      );
-      animation: bgFlash 0.5s infinite;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-image: url('https://i.imgur.com/3ZQ9Z9X.png');
+  background-repeat: repeat;
+  animation: bg-scroll 10s linear infinite;
+}
 
-    @keyframes bgFlash {
-      0% { background-color: var(--color1); }
-      25% { background-color: var(--color2); }
-      50% { background-color: var(--color3); }
-      75% { background-color: var(--color4); }
-      100% { background-color: var(--color1); }
-    }
+@keyframes bg-scroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
 
-    .container {
-      width: 90%;
-      margin: 20px auto;
-      border: 15px dotted black;
-      padding: 10px;
-      background: url('https://i.gifer.com/7VE.gif');
-      transform: rotate(3deg);
-    }
+.profile-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+  border: 10px dashed var(--eye-burn-blue);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: var(--shadow);
+  transform: rotate(1deg);
+}
 
-    h1 {
-      font-size: 5em;
-      color: #FFFFFF;
-      text-shadow: 
-        5px 5px 0 #000000,
-        -5px -5px 0 #FF0000,
-        10px 10px 0 #00FF00;
-      animation: rainbow 2s infinite;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+  animation: shake 0.5s infinite alternate;
+}
 
-    @keyframes rainbow {
-      0% { color: red; }
-      14% { color: orange; }
-      28% { color: yellow; }
-      42% { color: green; }
-      57% { color: blue; }
-      71% { color: indigo; }
-      85% { color: violet; }
-      100% { color: red; }
-    }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(10px); }
+}
 
-    .profile-pic {
-      width: 200px;
-      height: 200px;
-      border: 10px ridge #FF00FF;
-      margin: 20px auto;
-      display: block;
-      filter: hue-rotate(90deg) contrast(200%) brightness(150%);
-      animation: spin 5s linear infinite;
-    }
+.profile-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 0;
+  overflow: hidden;
+  border: 5px solid var(--vomit-yellow);
+  box-shadow: 0 0 20px var(--ugly-pink);
+  transform: skewX(-10deg);
+}
 
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: hue-rotate(90deg) contrast(150%);
+}
 
-    .info-box {
-      background: rgba(255, 255, 255, 0.1);
-      border: 8px dashed #00FFFF;
-      margin: 20px 0;
-      padding: 15px;
-      box-shadow: 
-        0 0 20px #FF0000,
-        0 0 40px #00FF00,
-        0 0 60px #0000FF;
-    }
+.profile-info h1 {
+  font-size: 3em;
+  margin: 0;
+  color: var(--ugly-pink);
+  text-shadow: 3px 3px 0 var(--toxic-green);
+  font-weight: 900;
+  letter-spacing: 2px;
+}
 
-    h2 {
-      font-size: 3em;
-      color: #FFFFFF;
-      text-decoration: underline wavy #FFFF00;
-      margin: 0;
-      text-align: right;
-    }
+.profile-info p {
+  font-size: 1.5em;
+  margin: 5px 0 0;
+  color: var(--text-color);
+  background-color: var(--toxic-green);
+  padding: 5px;
+  display: inline-block;
+}
 
-    p {
-      font-size: 1.5em;
-      color: #FFFFFF;
-      text-shadow: 2px 2px 0 #000000;
-      line-height: 1.2;
-      margin: 10px 0;
-    }
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
 
-    .marquee {
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      background: #000000;
-      color: #FFFFFF;
-      padding: 10px;
-      font-size: 2em;
-      border-top: 5px solid #FF00FF;
-      border-bottom: 5px solid #00FFFF;
-    }
+.profile-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  box-shadow: var(--shadow);
+  border: 3px solid var(--vomit-yellow);
+  animation: pulse 2s infinite;
+}
 
-    .marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 10s linear infinite;
-    }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
 
-    @keyframes marquee {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
-    }
+.profile-card h2 {
+  color: var(--eye-burn-blue);
+  margin-top: 0;
+  text-decoration: underline wavy var(--ugly-pink);
+  font-size: 1.8em;
+}
 
-    .button {
-      display: block;
-      width: 200px;
-      height: 80px;
-      margin: 30px auto;
-      background: radial-gradient(circle, #FF0000, #0000FF);
-      border: 5px groove #FFFF00;
-      color: #FFFFFF;
-      font-size: 1.5em;
-      font-weight: bold;
-      text-align: center;
-      line-height: 80px;
-      text-decoration: blink;
-      animation: pulse 0.5s infinite alternate;
-      cursor: pointer;
-    }
+/* Опыт работы */
+.experience-card {
+  grid-column: span 2;
+  background-color: rgba(255, 0, 170, 0.1);
+}
 
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.2); }
-    }
+.exp-item {
+  background-color: rgba(0, 255, 85, 0.1);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  border-left: 10px solid var(--eye-burn-blue);
+  margin-bottom: 10px;
+}
 
-    .counter {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      font-size: 3em;
-      color: #FFFFFF;
-      background: #000000;
-      padding: 10px;
-      border: 5px solid #FF00FF;
-      animation: counterSpin 2s linear infinite;
-    }
+.exp-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: var(--ugly-pink);
+  font-family: "Papyrus", fantasy;
+}
 
-    @keyframes counterSpin {
-      0% { transform: rotate(0deg); }
-      25% { transform: rotate(90deg); }
-      50% { transform: rotate(180deg); }
-      75% { transform: rotate(270deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>МОЙ СУПЕР-ПРОФИЛЬ</h1>
-    
-    <img src="https://i.imgur.com/3ZQ9Z9X.png" class="profile-pic" alt="Моя фотка">
-    
-    <div class="info-box">
-      <h2>ОБО МНЕ</h2>
-      <p>Привет! Я тупорылый дизайнер!</p>
-      <p>Люблю делать ужасные сайты!</p>
-      <p>Мой девиз: "Чем хуже - тем лучше!"</p>
-    </div>
-    
-    <div class="marquee">
-      <span>⚠️ ВНИМАНИЕ! ЭТОТ САЙТ СЛИШКОМ КРУТ ДЛЯ ТВОИХ ГЛАЗ! ⚠️</span>
-    </div>
-    
-    <div class="button">НАЖМИ МЕНЯ!</div>
-  </div>
+.exp-date {
+  font-size: 1em;
+  color: var(--vomit-yellow);
+  background-color: black;
+  padding: 2px 5px;
+}
+
+.exp-company::before {
+  content: "🔥";
+}
+
+/* Образование */
+.edu-item {
+  background-color: rgba(0, 102, 255, 0.1);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  border-left: 10px solid var(--ugly-pink);
+  margin-bottom: 10px;
+}
+
+.edu-header h3 {
+  margin: 0;
+  font-size: 1.5em;
+  color: var(--toxic-green);
+  font-family: "Times New Roman", serif;
+}
+
+.edu-place::before {
+  content: "💩";
+}
+
+/* Теги */
+.tag {
+  background-color: var(--vomit-yellow);
+  color: black;
+  padding: 3px 10px;
+  border-radius: 0;
+  font-family: "Impact", sans-serif;
+  border: 2px dotted var(--ugly-pink);
+}
+
+/* Кнопки */
+button {
+  border-radius: 0;
+  border: 3px solid black;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  background-color: var(--toxic-green);
+  color: black;
+  cursor: pointer;
+  transition: all 0.1s;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--ugly-pink);
+  transform: rotate(5deg);
+}
+
+/* Адаптивность (но всё равно криво) */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: left;
+    animation: none;
+  }
   
-  <div class="counter">9999</div>
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
   
-  <audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
-  
-  <script>
-    // Случайное мерцание элементов
-    setInterval(function() {
-      document.querySelectorAll('*').forEach(el => {
-        el.style.visibility = Math.random() > 0.5 ? 'visible' : 'hidden';
-      });
-    }, 100);
-    
-    // Случайное изменение размеров
-    setInterval(function() {
-      document.querySelectorAll('*').forEach(el => {
-        el.style.fontSize = Math.random() * 50 + 'px';
-      });
-    }, 500);
-  </script>
-</body>
-</html>
+  .profile-container {
+    transform: rotate(-1deg);
+  }
+}
