@@ -1,228 +1,234 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <title>Моё КРИВОЕ резюме</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Минималистичное резюме</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      background-color: #FF00FF;
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      color: yellow;
-      margin: 0;
-      padding: 20px;
-      background-image: url('https://i.imgur.com/3ZQ9Z9X.png');
-      background-repeat: repeat;
-    }
-    
-    .container {
+      font-family: 'Helvetica', Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
       max-width: 800px;
       margin: 0 auto;
-      border: 10px dotted lime;
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.7);
-      transform: rotate(1deg);
+    }
+    
+    header {
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
     }
     
     h1 {
-      font-size: 50px;
-      text-align: center;
-      color: cyan;
-      text-shadow: 5px 5px 0 red;
       margin: 0;
-      animation: blink 1s infinite;
+      font-size: 28px;
+      font-weight: normal;
     }
     
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
+    .position {
+      color: #666;
+      margin: 5px 0 15px;
     }
     
     .photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 0;
-      border: 5px ridge yellow;
-      margin: 20px auto;
-      display: block;
-      transform: skewX(20deg);
-      filter: hue-rotate(90deg) contrast(200%);
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border: 1px solid #ddd;
+      float: right;
+      margin-left: 20px;
     }
     
-    .section {
-      background: linear-gradient(45deg, red, blue);
-      padding: 15px;
-      margin: 20px 0;
-      border: 3px dashed white;
+    section {
+      margin-bottom: 30px;
     }
     
     h2 {
-      color: lime;
-      font-size: 30px;
-      text-decoration: underline wavy;
-      margin: 0 0 10px 0;
-    }
-    
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    
-    li {
-      margin: 10px 0;
-      padding: 5px;
-      background-color: rgba(255, 255, 255, 0.2);
-      border-left: 5px solid cyan;
-    }
-    
-    .tag {
-      display: inline-block;
-      background-color: yellow;
-      color: black;
-      padding: 3px 10px;
-      margin: 3px;
-      border-radius: 0;
-      font-weight: bold;
-      transform: rotate(-5deg);
-    }
-    
-    .contact {
-      font-size: 18px;
-      margin: 5px 0;
-    }
-    
-    .contact i {
-      color: red;
-      margin-right: 10px;
-    }
-    
-    .marquee {
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      background: black;
-      color: white;
-      padding: 10px;
       font-size: 20px;
-      margin: 20px 0;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+      margin-top: 0;
     }
     
-    .marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: marquee 10s linear infinite;
+    .job, .education {
+      margin-bottom: 20px;
     }
     
-    @keyframes marquee {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-100%, 0); }
+    .job-title, .degree {
+      font-weight: bold;
+    }
+    
+    .company, .university {
+      color: #666;
+    }
+    
+    .period {
+      color: #999;
+      font-size: 14px;
+    }
+    
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .skill {
+      background: #f5f5f5;
+      padding: 5px 10px;
+      border-radius: 3px;
+      font-size: 14px;
+    }
+    
+    .contact-item {
+      margin-bottom: 10px;
+    }
+    
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
     }
     
     button {
-      background: linear-gradient(red, orange);
-      color: black;
-      border: none;
-      padding: 15px 30px;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 20px auto;
-      display: block;
+      padding: 10px 15px;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
       cursor: pointer;
-      animation: pulse 0.5s infinite alternate;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
     
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.2); }
+    button:hover {
+      background: #eee;
+    }
+    
+    @media print {
+      button {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>МОЁ СУПЕР-Резюме</h1>
-    
-    <img src="https://i.imgur.com/3ZQ9Z9X.png" class="photo" alt="Моя кривая фотка">
-    
-    <div class="marquee">
-      <span>⚠️ ВНИМАНИЕ! ЭТО САМОЕ КРУТОЕ РЕЗЮМЕ В МИРЕ! ⚠️</span>
+  <header>
+    <img src="https://via.placeholder.com/120" alt="Фото профиля" class="photo">
+    <h1>Иван Иванов</h1>
+    <div class="position">Веб-разработчик</div>
+  </header>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+    <div>
+      <section>
+        <h2>Контактные данные</h2>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i> +7 (123) 456-78-90
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i> ivanov@example.com
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i> github.com/ivanov
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i> Москва, Россия
+        </div>
+      </section>
+
+      <section>
+        <h2>Навыки</h2>
+        <div class="skills">
+          <span class="skill">HTML/CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">Git</span>
+          <span class="skill">SQL</span>
+        </div>
+      </section>
+
+      <section>
+        <h2>Языки</h2>
+        <div>
+          <div>Русский (родной)</div>
+          <div>Английский (B2)</div>
+        </div>
+      </section>
     </div>
-    
-    <div class="section">
-      <h2>Обо мне</h2>
-      <p>Я - супер-пупер программист! Люблю делать кривые сайты и ломать глаза HR-ам!</p>
+
+    <div>
+      <section>
+        <h2>Опыт работы</h2>
+        <div class="job">
+          <div style="display: flex; justify-content: space-between;">
+            <span class="job-title">Старший веб-разработчик</span>
+            <span class="period">2020 - н.в.</span>
+          </div>
+          <div class="company">ТехноКаб, Москва</div>
+          <p>Разработка и поддержка веб-приложений, руководство командой разработчиков.</p>
+        </div>
+        <div class="job">
+          <div style="display: flex; justify-content: space-between;">
+            <span class="job-title">Веб-разработчик</span>
+            <span class="period">2018 - 2020</span>
+          </div>
+          <div class="company">ДизайнСтудия, СПб</div>
+          <p>Создание адаптивных веб-сайтов, интеграция с CMS.</p>
+        </div>
+        <button onclick="addExperience()">
+          <i class="fas fa-plus"></i> Добавить опыт работы
+        </button>
+      </section>
+
+      <section>
+        <h2>Образование</h2>
+        <div class="education">
+          <div style="display: flex; justify-content: space-between;">
+            <span class="degree">Магистр компьютерных наук</span>
+            <span class="period">2014 - 2018</span>
+          </div>
+          <div class="university">Московский технический университет</div>
+          <p>Специализация: Веб-технологии. Диплом с отличием.</p>
+        </div>
+        <button onclick="addEducation()">
+          <i class="fas fa-plus"></i> Добавить образование
+        </button>
+      </section>
     </div>
-    
-    <div class="section">
-      <h2>Навыки</h2>
-      <div>
-        <span class="tag">HTML (очень кривой)</span>
-        <span class="tag">CSS (без flex/grid)</span>
-        <span class="tag">JavaScript (иногда)</span>
-        <span class="tag">PHP (если очень надо)</span>
-        <span class="tag">SQL (SELECT * FROM)</span>
-        <span class="tag">Git (push --force)</span>
-      </div>
-    </div>
-    
-    <div class="section">
-      <h2>Опыт работы</h2>
-      <ul>
-        <li>
-          <strong>Главный криворукий разработчик</strong><br>
-          Компания "Рога и копыта" (2020-сейчас)<br>
-          Делал всё криво, но начальник не замечал
-        </li>
-        <li>
-          <strong>Младший ломатель сайтов</strong><br>
-          Студия "Васян" (2018-2020)<br>
-          Ломал чужие сайты и называл это "тестированием"
-        </li>
-      </ul>
-    </div>
-    
-    <div class="section">
-      <h2>Образование</h2>
-      <ul>
-        <li>
-          <strong>YouTube University</strong><br>
-          Факультет: "Как сделать сайт за 5 минут"<br>
-          2015-2018
-        </li>
-        <li>
-          <strong>Школа жизни</strong><br>
-          Специальность: "Гугление ошибок"<br>
-          2000-сейчас
-        </li>
-      </ul>
-    </div>
-    
-    <div class="section">
-      <h2>Контакты</h2>
-      <div class="contact"><i>📞</i> +7 (XXX) XXX-XX-XX</div>
-      <div class="contact"><i>📧</i> my@super.cool</div>
-      <div class="contact"><i>🌐</i> github.com/i-dont-have-github</div>
-      <div class="contact"><i>📍</i> Москва, ул. Кривая, д. 13</div>
-    </div>
-    
-    <button onclick="alert('А вот и нет! PDF не будет!')">Скачать PDF</button>
   </div>
-  
-  <audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
-  
+
+  <div class="buttons">
+    <button onclick="downloadPDF()">
+      <i class="fas fa-download"></i> Скачать PDF
+    </button>
+    <button onclick="contactMe()">
+      <i class="fas fa-envelope"></i> Написать мне
+    </button>
+  </div>
+
   <script>
-    // Случайное изменение цветов
-    setInterval(function() {
-      document.body.style.backgroundColor = 
-        `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
-    }, 1000);
+    function downloadPDF() {
+      // Здесь будет код для генерации PDF
+      alert("Функция скачивания PDF будет реализована");
+    }
     
-    // Случайное вращение элементов
-    setInterval(function() {
-      document.querySelectorAll('*').forEach(el => {
-        el.style.transform = `rotate(${Math.random()*10-5}deg)`;
-      });
-    }, 500);
+    function contactMe() {
+      // Здесь будет код для формы связи
+      alert("Функция связи будет реализована");
+    }
+    
+    function addExperience() {
+      // Здесь будет код для добавления опыта работы
+      alert("Функция добавления опыта работы будет реализована");
+    }
+    
+    function addEducation() {
+      // Здесь будет код для добавления образования
+      alert("Функция добавления образования будет реализована");
+    }
   </script>
 </body>
 </html>
