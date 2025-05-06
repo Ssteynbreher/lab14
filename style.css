@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --color1: #FF00FF;
+      --color2: #00FFFF;
+      --color3: #FFFF00;
+      --color4: #FF00FF;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Comic Sans MS", "Wingdings", "Papyrus", sans-serif;
+      background: repeating-linear-gradient(
+        45deg,
+        var(--color1),
+        var(--color1) 10px,
+        var(--color2) 10px,
+        var(--color2) 20px
+      );
+      animation: bgFlash 0.5s infinite;
+    }
+
+    @keyframes bgFlash {
+      0% { background-color: var(--color1); }
+      25% { background-color: var(--color2); }
+      50% { background-color: var(--color3); }
+      75% { background-color: var(--color4); }
+      100% { background-color: var(--color1); }
+    }
+
+    .container {
+      width: 90%;
+      margin: 20px auto;
+      border: 15px dotted black;
+      padding: 10px;
+      background: url('https://i.gifer.com/7VE.gif');
+      transform: rotate(3deg);
+    }
+
+    h1 {
+      font-size: 5em;
+      color: #FFFFFF;
+      text-shadow: 
+        5px 5px 0 #000000,
+        -5px -5px 0 #FF0000,
+        10px 10px 0 #00FF00;
+      animation: rainbow 2s infinite;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes rainbow {
+      0% { color: red; }
+      14% { color: orange; }
+      28% { color: yellow; }
+      42% { color: green; }
+      57% { color: blue; }
+      71% { color: indigo; }
+      85% { color: violet; }
+      100% { color: red; }
+    }
+
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+      border: 10px ridge #FF00FF;
+      margin: 20px auto;
+      display: block;
+      filter: hue-rotate(90deg) contrast(200%) brightness(150%);
+      animation: spin 5s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 8px dashed #00FFFF;
+      margin: 20px 0;
+      padding: 15px;
+      box-shadow: 
+        0 0 20px #FF0000,
+        0 0 40px #00FF00,
+        0 0 60px #0000FF;
+    }
+
+    h2 {
+      font-size: 3em;
+      color: #FFFFFF;
+      text-decoration: underline wavy #FFFF00;
+      margin: 0;
+      text-align: right;
+    }
+
+    p {
+      font-size: 1.5em;
+      color: #FFFFFF;
+      text-shadow: 2px 2px 0 #000000;
+      line-height: 1.2;
+      margin: 10px 0;
+    }
+
+    .marquee {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      background: #000000;
+      color: #FFFFFF;
+      padding: 10px;
+      font-size: 2em;
+      border-top: 5px solid #FF00FF;
+      border-bottom: 5px solid #00FFFF;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
+
+    .button {
+      display: block;
+      width: 200px;
+      height: 80px;
+      margin: 30px auto;
+      background: radial-gradient(circle, #FF0000, #0000FF);
+      border: 5px groove #FFFF00;
+      color: #FFFFFF;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      line-height: 80px;
+      text-decoration: blink;
+      animation: pulse 0.5s infinite alternate;
+      cursor: pointer;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.2); }
+    }
+
+    .counter {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 3em;
+      color: #FFFFFF;
+      background: #000000;
+      padding: 10px;
+      border: 5px solid #FF00FF;
+      animation: counterSpin 2s linear infinite;
+    }
+
+    @keyframes counterSpin {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(90deg); }
+      50% { transform: rotate(180deg); }
+      75% { transform: rotate(270deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>МОЙ СУПЕР-ПРОФИЛЬ</h1>
+    
+    <img src="https://i.imgur.com/3ZQ9Z9X.png" class="profile-pic" alt="Моя фотка">
+    
+    <div class="info-box">
+      <h2>ОБО МНЕ</h2>
+      <p>Привет! Я тупорылый дизайнер!</p>
+      <p>Люблю делать ужасные сайты!</p>
+      <p>Мой девиз: "Чем хуже - тем лучше!"</p>
+    </div>
+    
+    <div class="marquee">
+      <span>⚠️ ВНИМАНИЕ! ЭТОТ САЙТ СЛИШКОМ КРУТ ДЛЯ ТВОИХ ГЛАЗ! ⚠️</span>
+    </div>
+    
+    <div class="button">НАЖМИ МЕНЯ!</div>
+  </div>
+  
+  <div class="counter">9999</div>
+  
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  
+  <script>
+    // Случайное мерцание элементов
+    setInterval(function() {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.visibility = Math.random() > 0.5 ? 'visible' : 'hidden';
+      });
+    }, 100);
+    
+    // Случайное изменение размеров
+    setInterval(function() {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.fontSize = Math.random() * 50 + 'px';
+      });
+    }, 500);
+  </script>
+</body>
+</html>
